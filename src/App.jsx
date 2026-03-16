@@ -18,14 +18,16 @@ import Colors from "./pages/colors";
 
 function App() {
   return (
-    <main className="main-content">
-      <Routes>
-        <Route path="/" element={<Home />} /> {/*Home page */}
-        <Route path="/learning_modules" element={<LearningModules />} />
-        {/*Learning modules page */}
-        <Route path="/colors" element={<Colors />} />
-      </Routes>
-    </main>
+    <>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} /> {/*Home page */}
+          <Route path="/learning_modules" element={<LearningModules />} />
+          {/*Learning modules page */}
+          <Route path="/colors" element={<Colors />} />
+        </Routes>
+      </main>
+    </>
   );
 }
 

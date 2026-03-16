@@ -2,14 +2,47 @@
 // and a button to navigate to the learning modules page
 
 import { useNavigate } from "react-router-dom";
+import Aurora from "../components/Aurora";
 
 function Home() {
   const navigate = useNavigate();
   return (
-    <div className="home">
-      <h1>Welcome to the Dena'ina Learning Website</h1>
-      <button onClick={() => navigate("/learning_modules")}>READY</button>
-    </div>
+    <>
+      {/* With custom prop values */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+        }}
+      >
+        <Aurora
+          colorStops={["#e662b3", "#4cf2ed", "#5227FF"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={1}
+        />
+      </div>
+      <div
+        className="home"
+        style={{
+          position: "relative",
+          textAlign: "center",
+          padding: "200px",
+          zIndex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          textAligh: "center",
+        }}
+      >
+        <h1>Welcome to the Dena'ina Learning Website</h1>
+        <button onClick={() => navigate("/learning_modules")}>READY</button>
+      </div>
+    </>
   );
 }
 export default Home;

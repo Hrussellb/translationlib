@@ -92,44 +92,49 @@ function Colors() {
   const shuffledArray = ArrayCombined.sort(() => Math.random() - 0.5);
 
   return (
-    <div className="colors">
-      {answered === Colorwords.length && <Confetti />}
-      <ProgressBar
-        bgcolor="#79bc68"
-        completed={(answered / Colorwords.length) * 100}
-      />
-      <Button
-        onClick={() => {
-          selectRandomColor(setIndex, setWrongAnswers);
-          setAnswered(answered + 1);
-          if (answered === Colorwords.length) {
-            alert("Congratulations! You have completed the colors module!");
-          }
-        }}
-        color="black"
-        border="3px solid black"
-      >
-        Next Color
-      </Button>
-      <h1>Ch'adach' luchin "{currentColor.denaina}"</h1>
-      {shuffledArray.map((color, i) => (
+    <div className="page-container">
+      <div className="colors">
+        {answered === Colorwords.length && <Confetti />}
+        <ProgressBar
+          bgcolor="#79bc68"
+          completed={(answered / Colorwords.length) * 100}
+        />
         <Button
-          key={i}
           onClick={() => {
-            if (color.english === currentColor.english) {
-              alert("Correct!");
-              setAnswered(answered + 1);
-            } else {
-              alert("Wrong! Try again!");
+            selectRandomColor(setIndex, setWrongAnswers);
+            setAnswered(answered + 1);
+            if (answered === Colorwords.length) {
+              alert("Congratulations! You have completed the colors module!");
+            }
+            if (answered === Colorwords.length + 1) {
+              setAnswered(answered - 10);
             }
           }}
-          color={color.english}
-          border={`3px solid ${color.english}`}
+          color="black"
+          border="3px solid black"
         >
-          {color.english}
+          Next Color
         </Button>
-      ))}
-      <h1>English: {currentColor.english}</h1>
+        <h1>Ch'adach' luchin "{currentColor.denaina}"</h1>
+        {shuffledArray.map((color, i) => (
+          <Button
+            key={i}
+            onClick={() => {
+              if (color.english === currentColor.english) {
+                alert("Correct!");
+                setAnswered(answered + 1);
+              } else {
+                alert("Wrong! Try again!");
+              }
+            }}
+            color={color.english}
+            border={`3px solid ${color.english}`}
+          >
+            {color.english}
+          </Button>
+        ))}
+        <h1>English: {currentColor.english}</h1>
+      </div>
     </div>
   );
 }
