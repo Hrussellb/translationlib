@@ -98,9 +98,9 @@ function LearningModules() {
               Animals
             </Button>
           </div>
-          <div className="Foods+Verbs">
+          <div className="Foods">
             <Button
-              onClick={() => navigate("/foods_verbs")}
+              onClick={() => navigate("/foods")}
               width="200px"
               height="100px"
               backgroundColor="#ffffff"
@@ -109,7 +109,7 @@ function LearningModules() {
               Foods + Verbs
             </Button>
           </div>
-          <div className="Household_Items">
+          <div className="Household Items">
             <Button
               onClick={() => navigate("/household_items")}
               width="200px"
@@ -120,9 +120,9 @@ function LearningModules() {
               Household Items
             </Button>
           </div>
-          <div className="Drinks+Verbs">
+          <div className="Drinks">
             <Button
-              onClick={() => navigate("/drinks_verbs")}
+              onClick={() => navigate("/drinks")}
               width="200px"
               height="100px"
               backgroundColor="#ffffff"
@@ -131,19 +131,19 @@ function LearningModules() {
               Drinks + Verbs
             </Button>
           </div>
-          <div className="Names_of_Buildings">
+          <div className="Buildings">
             <Button
-              onClick={() => navigate("/names_of_buildings")}
+              onClick={() => navigate("/buildings")}
               width="200px"
               height="100px"
               backgroundColor="#ffffff"
               color="#000000"
             >
-              Names of Buildings
+              Buildings
             </Button>
           </div>
         </>
-      </div>{" "}
+      </div>
     </div>
   );
 }

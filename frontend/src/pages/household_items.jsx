@@ -6,12 +6,6 @@ import {
 } from "../functions/selectRandomVocabulary";
 
 import Quiz from "../components/Quizzes";
-
-// Words for the colors module
-//https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-//https://www.youtube.com/watch?v=37vxWr0WgQk
-// If you want to verify fetches go to the page and left click to inspect and go to console
-
 //Function to make the first page of the module with the words and a start button
 function MakeFirstPage({ firstPage, setFirstPage }) {
   // Setting up the first page
@@ -32,11 +26,11 @@ function MakeFirstPage({ firstPage, setFirstPage }) {
     );
   }
 }
+function household_Items() {
+  //Change variable names to appropriate ones for the module
+  const [householdItems, setHouseholdItems] = useState([]);
 
-function Colors() {
-  const [colors, setColors] = useState([]);
-
-  // State to keep track of the current color index
+  // State to keep track of the current  index
   const [index, setIndex] = useState(0);
 
   //For wrong answers
@@ -55,9 +49,9 @@ function Colors() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/colors/");
+        const response = await fetch("http://127.0.0.1:8000/household_items/");
         if (!response.ok) {
-          throw new Error("Could not fetch colors data");
+          throw new Error("Could not fetch data");
         }
         const data = await response.json();
         const renameColumns = data.map((item) => {
@@ -66,7 +60,7 @@ function Colors() {
             denaina: item["Dena'inaq'"],
           };
         });
-        setColors(renameColumns);
+        setHouseholdItems(renameColumns);
         setWrongAnswers(selectNotRandomVocabulary(0, renameColumns));
         setStatus(true);
       } catch (error) {
@@ -81,24 +75,25 @@ function Colors() {
   }
 
   // First page function to list words
+  // INFORMATION
   if (!firstPage) {
     return <MakeFirstPage firstPage={firstPage} setFirstPage={setFirstPage} />;
   }
 
   return (
     <Quiz
-      vocabulary={colors}
+      vocabulary={householdItems}
       index={index}
       wrongAnswers={wrongAnswers}
       setWrongAnswers={setWrongAnswers}
       setIndex={setIndex}
       answered={answered}
       setAnswered={setAnswered}
-      color={`${colors[index].english}`}
-      forColorModule={true}
-      question={"Ch'adach' luchin?"}
+      color={`${householdItems[index].english}`}
+      forColorModule={false}
+      question={"What is this?"}
     />
   );
 }
 
-export default Colors;
+export default household_Items;

@@ -33,8 +33,8 @@ function MakeFirstPage({ firstPage, setFirstPage }) {
   }
 }
 
-function Colors() {
-  const [colors, setColors] = useState([]);
+function Drinks() {
+  const [drinks, setDrinks] = useState([]);
 
   // State to keep track of the current color index
   const [index, setIndex] = useState(0);
@@ -55,9 +55,9 @@ function Colors() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/colors/");
+        const response = await fetch("http://127.0.0.1:8000/drinks/");
         if (!response.ok) {
-          throw new Error("Could not fetch colors data");
+          throw new Error("Could not fetch drinks data");
         }
         const data = await response.json();
         const renameColumns = data.map((item) => {
@@ -66,7 +66,7 @@ function Colors() {
             denaina: item["Dena'inaq'"],
           };
         });
-        setColors(renameColumns);
+        setDrinks(renameColumns);
         setWrongAnswers(selectNotRandomVocabulary(0, renameColumns));
         setStatus(true);
       } catch (error) {
@@ -87,18 +87,18 @@ function Colors() {
 
   return (
     <Quiz
-      vocabulary={colors}
+      vocabulary={drinks}
       index={index}
       wrongAnswers={wrongAnswers}
       setWrongAnswers={setWrongAnswers}
       setIndex={setIndex}
       answered={answered}
       setAnswered={setAnswered}
-      color={`${colors[index].english}`}
-      forColorModule={true}
+      color={`${drinks[index].english}`}
+      forColorModule={false}
       question={"Ch'adach' luchin?"}
     />
   );
 }
 
-export default Colors;
+export default Drinks;
