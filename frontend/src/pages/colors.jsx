@@ -6,32 +6,12 @@ import {
 } from "../functions/selectRandomVocabulary";
 
 import Quiz from "../components/Quizzes";
+import MakeFirstPage from "../components/FirstPage";
 
 // Words for the colors module
 //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 //https://www.youtube.com/watch?v=37vxWr0WgQk
 // If you want to verify fetches go to the page and left click to inspect and go to console
-
-//Function to make the first page of the module with the words and a start button
-function MakeFirstPage({ firstPage, setFirstPage }) {
-  // Setting up the first page
-  if (!firstPage) {
-    return (
-      <div className="learning-modules-grid">
-        <div className="page-container">
-          <p>Welcome to the colors module!</p>
-          <Button
-            onClick={() => setFirstPage(true)}
-            color="black"
-            border="3px solid black"
-          >
-            Start
-          </Button>
-        </div>
-      </div>
-    );
-  }
-}
 
 function Colors() {
   const [colors, setColors] = useState([]);
@@ -82,7 +62,14 @@ function Colors() {
 
   // First page function to list words
   if (!firstPage) {
-    return <MakeFirstPage firstPage={firstPage} setFirstPage={setFirstPage} />;
+    return (
+      <MakeFirstPage
+        firstPage={firstPage}
+        setFirstPage={setFirstPage}
+        moduleName={"Colors"}
+        words={colors}
+      />
+    );
   }
 
   return (

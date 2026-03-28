@@ -106,7 +106,7 @@ function LearningModules() {
               backgroundColor="#ffffff"
               color="#000000"
             >
-              Foods + Verbs
+              Foods
             </Button>
           </div>
           <div className="Household Items">
@@ -128,7 +128,7 @@ function LearningModules() {
               backgroundColor="#ffffff"
               color="#000000"
             >
-              Drinks + Verbs
+              Drinks
             </Button>
           </div>
           <div className="Buildings">
