@@ -8,10 +8,9 @@ import {
 import Quiz from "../components/Quizzes";
 import MakeFirstPage from "../components/FirstPage";
 
-// Words for the colors module
+//Words for the colors module
 //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 //https://www.youtube.com/watch?v=37vxWr0WgQk
-// If you want to verify fetches go to the page and left click to inspect and go to console
 
 function Colors() {
   const [colors, setColors] = useState([]);

@@ -1,5 +1,7 @@
 /*This file is responsible for styling the entire application */
   
+@import "tailwindcss";
+
 .aurora-container {
   width: 100%;
   height: 100%;

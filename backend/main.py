@@ -27,6 +27,12 @@ app.add_middleware(
 #Source: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_json.html
 #for different formats for orient
 #Source: https://www.geeksforgeeks.org/pandas/how-to-convert-pandas-dataframe-into-json-in-python/
+
+@app.get("/categories/")
+def read_categories_data():
+    data = pd.read_csv("modules_data/categories.csv")
+    return data.to_dict(orient = "records")
+
 @app.get("/colors/")
 def read_colors_data():
     data = pd.read_csv("modules_data/colors.csv")

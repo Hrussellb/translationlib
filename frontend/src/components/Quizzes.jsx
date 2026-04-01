@@ -37,6 +37,7 @@ function Quiz({
 
   //Array with correct and wrong answers
   const ArrayCombined = [currentVocabulary, ...wrongAnswers];
+
   //Shuffle the answers so that they arent ordered
   // Algorithm from
   // https://coreui.io/answers/how-to-shuffle-an-array-in-javascript/#:~:text=The%20Fisher%2DYates%20algorithm%20works,better%20than%20naive%20sorting%20approaches.
@@ -49,18 +50,11 @@ function Quiz({
   }
 
   // shuffledArray is the arra that will be displayed to the user
-
   const shuffledArray = ArrayCombined;
 
   return (
     <div className="page-container">
       <div className="vocabulary" style={{ width: "800px" }}>
-        {/*
-          answered is a variable to count how many questions the user answered correctly
-          Increments by one if correct and decrements by one if not
-          If answered === vocabulary.length, then CONFETTI!
-          Calls ProgressBar component to show progress. Green bar is chosen as color using completed variable
-          */}
         {answered === vocabulary.length && <Confetti />}
         <div style={{ height: "50px", width: "800px", marginBottom: "20px" }}>
           <ProgressBar
@@ -95,6 +89,7 @@ function Quiz({
         </h1>
         {shuffledArray.map((vocab, i) => (
           <Button
+            style={{ marginBottom: "10px", width: "1000px", height: "50px" }}
             key={i}
             onClick={() => {
               if (vocab.english === currentVocabulary.english) {
