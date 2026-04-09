@@ -1,8 +1,6 @@
 // Progress bar
-//https://dev.to/ramonak/react-how-to-create-a-custom-progress-bar-component-in-5-minutes-2lcl
 
-function ProgressBar(props) {
-  const { bgcolor, completed } = props;
+function ProgressBar({ bgcolor, completed }) {
   return (
     <div
       style={{

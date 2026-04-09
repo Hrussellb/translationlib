@@ -1,5 +1,6 @@
 import Carousel from "./Carousel";
 import Button from "./Button";
+import HomeButton from "./HomeButton";
 
 function MakeFirstPage({ firstPage, setFirstPage, moduleName, words }) {
   const carouselItems = words.map((word, index) => ({
@@ -12,9 +13,10 @@ function MakeFirstPage({ firstPage, setFirstPage, moduleName, words }) {
     return (
       <div className="page-container">
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <div style={{ height: "600px", position: "relative" }}>
+          <div style={{ height: "400px", position: "relative" }}>
+            <HomeButton />
             <p>Welcome to the {moduleName} module!</p>
-            <div style={{ height: "600px", position: "relative" }}>
+            <div style={{ height: "400px", position: "relative" }}>
               <Carousel items={carouselItems} loop={true} />
             </div>
           </div>

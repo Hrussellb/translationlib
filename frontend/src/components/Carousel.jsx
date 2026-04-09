@@ -52,7 +52,7 @@ function CarouselItem({
 
 export default function Carousel({
   items = DEFAULT_ITEMS,
-  baseWidth = 300,
+  baseWidth = 600,
   autoplay = false,
   autoplayDelay = 3000,
   pauseOnHover = false,

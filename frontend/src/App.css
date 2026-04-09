@@ -1,92 +1,42 @@
-/*Formatting the butons, text, and background of the website*/
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import "tailwindcss";
+
+.aurora-container {
+  width: 100%;
+  height: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+/* Global styles this alters the background */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+/*Styles for the home page alters the page size*/
+
+
+
+  body {
+  background: linear-gradient(to bottom, #3442d2 0%, #de482dbe 100%);
+  color: rgb(120, 185, 195);
+  text-shadow: -5px 10px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.home{
-  display: flex;
-
-  /*Stacks items on top of each other*/
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-}
-
-button {
-
-  font-family: 'Roboto', sans-serif;
-  background-color: #ffffff;
-  border: none;
-  color: rgb(23, 195, 83);
-
-  font-weight: bold;
-
-  box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.6);
-
-
-  /*Spaces inside the button*/
-  padding: 15px 32px;
-
-  /*Centers the text inside the button*/
-  text-align: center;
-
-  /*Removes the underline from the text*/
-  text-decoration: none;
-
-  /*Changes the display of the button to inline-block,
-   which allows it to have a width and height*/
-  display: inline-block;
-
-  /*Changes the font size*/
-  font-size: 20px;
-
-  /*Spaces outside the button*/
-  margin: 4px 2px;
-
-  /*Changes the mouse to a pointer when hovering over the button*/
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #c2c8ce;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }

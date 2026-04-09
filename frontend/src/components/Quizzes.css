@@ -1,4 +1,8 @@
-.fixed-button {
+.vocabulary{
+    align-items: center;
+    flex-direction: column;
+    display:flex;
+    margin:0 auto;
     
 
-};
+}

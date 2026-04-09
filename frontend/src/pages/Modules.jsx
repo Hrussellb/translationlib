@@ -1,36 +1,20 @@
 import { useState, useEffect } from "react";
+import {useParams} from "react-router-dom"
 import Button from "../components/Button";
 import {
-  selectRandomVocabulary,
   selectNotRandomVocabulary,
 } from "../functions/selectRandomVocabulary";
-
 import Quiz from "../components/Quizzes";
-//Function to make the first page of the module with the words and a start button
-function MakeFirstPage({ firstPage, setFirstPage }) {
-  // Setting up the first page
-  if (!firstPage) {
-    return (
-      <div className="learning-modules-grid">
-        <div className="page-container">
-          <p>Welcome to the colors module!</p>
-          <Button
-            onClick={() => setFirstPage(true)}
-            color="black"
-            border="3px solid black"
-          >
-            Start
-          </Button>
-        </div>
-      </div>
-    );
-  }
-}
-function Emotions() {
-  //Change variable names to appropriate ones for the module
-  const [emotions, setEmotions] = useState([]);
+import MakeFirstPage from "../components/MakeFirstPage";
 
-  // State to keep track of the current  index
+// This page is for the modules, it will show the quiz and the words for each module dynamically
+
+function Modules() {
+  const { category } = useParams();
+
+  const [vocabulary, setVocabulary] = useState([]);
+
+  // State to keep track of the current index
   const [index, setIndex] = useState(0);
 
   //For wrong answers
@@ -49,8 +33,7 @@ function Emotions() {
   useEffect(() => {
     async function fetchData() {
       try {
-        //Change the url to the appropriate one for the module
-        const response = await fetch("http://127.0.0.1:8000/emotions/");
+        const response = await fetch(`http://127.0.0.1:8000/${category}/`);
         if (!response.ok) {
           throw new Error("Could not fetch data");
         }
@@ -61,8 +44,7 @@ function Emotions() {
             denaina: item["Dena'inaq'"],
           };
         });
-        //Rename
-        setEmotions(renameColumns);
+        setVocabulary(renameColumns);
         setWrongAnswers(selectNotRandomVocabulary(0, renameColumns));
         setStatus(true);
       } catch (error) {
@@ -70,33 +52,33 @@ function Emotions() {
       }
     }
     fetchData();
-  }, []);
+  }, [category]);
 
   if (!status) {
     return <p>Working</p>;
   }
 
   // First page function to list words
-  // INFORMATION
   if (!firstPage) {
-    return <MakeFirstPage firstPage={firstPage} setFirstPage={setFirstPage} />;
+    return (
+      <MakeFirstPage firstPage={firstPage} setFirstPage={setFirstPage} moduleName={category} words={vocabulary} />
+    );
   }
 
   return (
     <Quiz
-      //Change variable names
-      vocabulary={emotions}
+      vocabulary={vocabulary}
       index={index}
       wrongAnswers={wrongAnswers}
       setWrongAnswers={setWrongAnswers}
       setIndex={setIndex}
       answered={answered}
       setAnswered={setAnswered}
-      color={`${emotions[index].english}`}
+      color={`${vocabulary[index].english}`}
       forColorModule={false}
-      question={"Ch'adach' luchin?"}
+      question={"What is this"}
     />
   );
 }
 
-export default Emotions;
+export default Modules;

@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Learning_modules.css";
-import CircularGallery from "../components/CircularGallery";
+
+//Create page that shows all the categories of the learning modules based on the CSV file in the backend.
 
 function LearningModules() {
   const navigate = useNavigate();
@@ -33,18 +34,18 @@ function LearningModules() {
 
   return (
     <div className="page-container">
-      <div className="gallery-container">
-        <CircularGallery
-          items={categories}
-          onItemClick={(category) => navigate(category.route)}
-          bend={0}
-          textColor="#ffffff"
-          borderRadius={0.05}
-          scrollSpeed={2}
-          scrollEase={0.05}
-        />
+      <div className="learning-modules-grid">
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            className="category-button"
+            onClick={() => navigate(category.route)}
+          >
+            {category.text}
+          </button>
+        ))}
       </div>
-    </div>
+      </div>
   );
 }
 
