@@ -1,0 +1,14 @@
+To run:
+npm run dev
+
+For back end in back end folder:
+python -m uvicorn main:app --reload
+
+To edit csv:
+Open in notebook
+Audio after coma. 
+If no audio available still put coma and the put a space
+
+
+Main.py:
+Las function is for read audio
