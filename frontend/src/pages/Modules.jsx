@@ -31,11 +31,11 @@ function Modules() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/${category}/`);
-        //const url =
-        //import.meta.env.VITE_API_URL ||
-        //"https://denainalearning-server.onrender.com";
-        //const response = await fetch(`${url}/${category}/`);
+        //const response = await fetch(`http://127.0.0.1:8000/${category}/`);
+        const url =
+          import.meta.env.VITE_API_URL ||
+          "https://denainalearning-server.onrender.com";
+        const response = await fetch(`${url}/${category}/`);
         if (!response.ok) {
           throw new Error("Could not fetch data");
         }
