@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom";
 import Button from "../components/Button";
-import {
-  selectNotRandomVocabulary,
-} from "../functions/selectRandomVocabulary";
+import { selectNotRandomVocabulary } from "../functions/selectRandomVocabulary";
 import Quiz from "../components/Quizzes";
 import MakeFirstPage from "../components/MakeFirstPage";
 
@@ -33,7 +31,11 @@ function Modules() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/${category}/`);
+        //const response = await fetch(`http://127.0.0.1:8000/${category}/`);
+        const url =
+          import.meta.env.VITE_API_URL ||
+          "https://denainalearning-server.onrender.com";
+        const response = await fetch(`${url}/${category}/`);
         if (!response.ok) {
           throw new Error("Could not fetch data");
         }
@@ -61,7 +63,12 @@ function Modules() {
   // First page function to list words
   if (!firstPage) {
     return (
-      <MakeFirstPage firstPage={firstPage} setFirstPage={setFirstPage} moduleName={category} words={vocabulary} />
+      <MakeFirstPage
+        firstPage={firstPage}
+        setFirstPage={setFirstPage}
+        moduleName={category}
+        words={vocabulary}
+      />
     );
   }
 

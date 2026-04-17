@@ -5,6 +5,9 @@ import { selectRandomVocabulary } from "../functions/selectRandomVocabulary";
 import Confetti from "react-confetti";
 import HomeButton from "./HomeButton";
 import "./Quizzes.css";
+import "../index.css";
+
+const size = "45rem";
 
 // White button is invisible and impossible to see
 
@@ -59,9 +62,9 @@ function Quiz({
             completed={(answered / vocabulary.length) * 100}
           />
         </div>
-        <HomeButton/>
         {/*Button to skip the current question*/}
-        <Button
+        <button
+          className="pushable"
           onClick={() => {
             selectRandomVocabulary(setIndex, setWrongAnswers, vocabulary);
             setAnswered(answered);
@@ -77,8 +80,10 @@ function Quiz({
           color={"black"}
           border={"3px solid black"}
         >
-          Skip?
-        </Button>
+          <span className="shadow"></span>
+          <span className="edge"></span>
+          <span className="front">Skip</span>
+        </button>
         {/*End of skip button*/}
 
         {/*Display the question and word to translate*/}
@@ -110,6 +115,7 @@ function Quiz({
             {vocab.english}
           </Button>
         ))}
+        <HomeButton />
       </div>
     </div>
   );

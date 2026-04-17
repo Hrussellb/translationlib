@@ -1,49 +1,145 @@
+:root{
+
+  --font-size: 1rem;
+  --shadow-shift-left: -0.5rem;
+  --shadow-shift-up: -0.5rem;
+  --shadow-blur: 0.5rem;
+  
+
+}
+
+
 .home{
   display: flex;
 
   /*Stacks items on top of each other*/
+
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 }
+
+/*https://uiverse.io/PriyanshuGupta28/brave-mole-100*/
 
 
 button {
 
+  position: relative;
   font-family: 'Roboto', sans-serif;
   background-color: #ffffff;
   border: none;
-  color: rgb(23, 195, 83);
-
+  color: rgb(46, 168, 95);
   font-weight: bold;
-
-  box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.6);
-
-
+  box-shadow: var(--shadow-shift-left) var(--shadow-shift-up) var(--shadow-blur) rgba(0, 0, 0, 0.6);
   /*Spaces inside the button*/
   padding: 15px 32px;
-
-  /*Centers the text inside the button*/
-  text-align: center;
-
-  /*Removes the underline from the text*/
-  text-decoration: none;
-
-  /*Changes the display of the button to inline-block,
-   which allows it to have a width and height*/
-  display: inline-block;
-
   /*Changes the font size*/
-  font-size: 20px;
-
+  font-size: var(--font-size);
   /*Spaces outside the button*/
   margin: 4px 2px;
-
-  /*Changes the mouse to a pointer when hovering over the button*/
   cursor: pointer;
+  transition: filter 250ms;
+  outline-offset: 0.25rem;
+  outline-color: deeppink;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.);
+  border:none;
 }
+
+
 
 button:hover {
   background-color: #c2c8ce;
+}
+
+
+/* From Uiverse.io by PriyanshuGupta28 */ 
+.pushable {
+  position: relative;
+  background: transparent;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  outline-offset: 4px;
+  outline-color: deeppink;
+  transition: filter 250ms;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: hsl(226, 25%, 69%);
+  border-radius: 8px;
+  filter: blur(2px);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  background: linear-gradient(
+    to right,
+    hsl(248, 39%, 39%) 0%,
+    hsl(248, 39%, 49%) 8%,
+    hsl(248, 39%, 39%) 92%,
+    hsl(248, 39%, 29%) 100%
+  );
+}
+
+.front {
+  display: block;
+  position: relative;
+  border-radius: 8px;
+  background: hsl(248, 53%, 58%);
+  padding: 16px 32px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.pushable:hover {
+  filter: brightness(110%);
+}
+
+.pushable:hover .front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.pushable:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.pushable:hover .shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.pushable:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pushable.no-shadow {
+  box-shadow: none;
 }

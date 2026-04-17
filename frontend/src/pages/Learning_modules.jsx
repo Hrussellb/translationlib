@@ -12,7 +12,11 @@ function LearningModules() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/categories/");
+        //const response = await fetch("http://127.0.0.1:8000/categories/");
+        const url =
+          import.meta.env.VITE_API_URL ||
+          "https://denainalearning-server.onrender.com";
+        const response = await fetch(`${url}/categories/`);
         if (!response.ok) {
           throw new Error("Could not fetch categories");
         }
@@ -45,7 +49,7 @@ function LearningModules() {
           </button>
         ))}
       </div>
-      </div>
+    </div>
   );
 }
 
