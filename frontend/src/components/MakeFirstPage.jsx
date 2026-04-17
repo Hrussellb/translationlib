@@ -1,6 +1,7 @@
 import Carousel from "./Carousel";
 import Button from "./Button";
 import HomeButton from "./HomeButton";
+import "../index.css";
 
 function MakeFirstPage({ firstPage, setFirstPage, moduleName, words }) {
   const carouselItems = words.map((word, index) => ({
@@ -20,13 +21,19 @@ function MakeFirstPage({ firstPage, setFirstPage, moduleName, words }) {
               <Carousel items={carouselItems} loop={true} />
             </div>
           </div>
-          <Button
+          <button
+            className="pushable no-shadow"
             onClick={() => setFirstPage(true)}
             color="black"
             border="3px solid black"
           >
-            Start
-          </Button>
+            <span className="shadow"></span>
+            <span className="edge"></span>
+            <span className="noShadow"></span>
+            <span className="front" style={{ padding: "1rem 10rem" }}>
+              START?
+            </span>
+          </button>
         </div>
       </div>
     );

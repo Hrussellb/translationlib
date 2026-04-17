@@ -3,6 +3,7 @@
 
 import { useNavigate } from "react-router-dom";
 import Aurora from "../components/Aurora";
+import "../index.css";
 
 function Home() {
   const navigate = useNavigate();
@@ -40,7 +41,17 @@ function Home() {
         }}
       >
         <h1>Welcome to the Dena'ina Learning Website</h1>
-        <button onClick={() => navigate("/learning_modules")}>READY</button>
+        <button
+          className="pushable no-shadow"
+          onClick={() => navigate("/learning_modules")}
+        >
+          <span className="shadow"></span>
+          <span className="edge"></span>
+          <span className="noShadow"></span>
+          <span className="front" style={{ padding: "1rem 10rem" }}>
+            READY?
+          </span>
+        </button>
       </div>
     </>
   );

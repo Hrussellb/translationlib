@@ -6,6 +6,7 @@ import Confetti from "react-confetti";
 import HomeButton from "./HomeButton";
 import "./Quizzes.css";
 import "../index.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const size = "45rem";
 
@@ -54,6 +55,7 @@ function Quiz({
 
   return (
     <div className="page-container">
+      <Toaster position="top-center" />;
       <div className="vocabulary" style={{ width: "800px" }}>
         {answered === vocabulary.length && <Confetti />}
         <div style={{ height: "50px", width: "800px" }}>
@@ -69,7 +71,7 @@ function Quiz({
             selectRandomVocabulary(setIndex, setWrongAnswers, vocabulary);
             setAnswered(answered);
             if (answered === vocabulary.length) {
-              alert(
+              toast.success(
                 "Congratulations! You have completed the vocabulary module!",
               );
             }
@@ -91,17 +93,16 @@ function Quiz({
           {question} "{currentVocabulary.denaina}"
         </h1>
         {shuffledArray.map((vocab) => (
-          <Button
-            height="50px"
-            width="400px"
+          <button
             key={vocab.english}
+            className="pushable no-shadow"
             onClick={() => {
               if (vocab.english === currentVocabulary.english) {
-                alert("Correct!");
                 selectRandomVocabulary(setIndex, setWrongAnswers, vocabulary);
+                toast.success("Correct!");
                 setAnswered(answered + 1);
               } else {
-                alert("Wrong! Try again!");
+                toast.error("Wrong! Try again!");
                 if (answered > 0) {
                   setAnswered(answered - 1);
                 }
@@ -112,8 +113,20 @@ function Quiz({
               forColorModule ? `3px solid ${handleWhite(vocab.english)}` : color
             }
           >
-            {vocab.english}
-          </Button>
+            <span className="shadow"></span>
+            <span className="edge"></span>
+            <span className="noShadow"></span>
+            <span
+              className="front"
+              style={{
+                padding: "1rem 0rem",
+                width: "20rem",
+                textAlign: "center",
+              }}
+            >
+              {vocab.english}
+            </span>
+          </button>
         ))}
         <HomeButton />
       </div>
