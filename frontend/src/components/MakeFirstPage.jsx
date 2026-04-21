@@ -16,7 +16,6 @@ function MakeFirstPage({ firstPage, setFirstPage, moduleName, words }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem"}}>
           <div style={{ height: "25rem", position: "relative" }}>
             <HomeButton />
-            <p>Welcome to the {moduleName} module!</p>
             <div style={{ height: "25rem", position: "relative" }}>
               <Carousel items={carouselItems} loop={true} />
             </div>
