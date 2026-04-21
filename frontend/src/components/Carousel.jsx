@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useMotionValue, useTransform } from "motion/react";
 // replace icons with your own if needed
 import {} from "react-icons/fi";
-
 import "./Carousel.css";
 
 const DRAG_BUFFER = 0;
@@ -42,9 +41,18 @@ function CarouselItem({
       <div className={`carousel-item-header ${round ? "round" : ""}`}>
         <span className="carousel-icon-container">{item.icon}</span>
       </div>
-      <div className="carousel-item-content">
+      <div className="carousel-item-content" >
         <div className="carousel-item-title">{item.title}</div>
         <p className="carousel-item-description">{item.description}</p>
+        <button 
+        style = {{display: 'flex', justifyContent: "flex-end", marginTop:"0.5rem", padding:"0.25rem 0.5rem", backgroundColor:"#fbfbfb", color:"#000000", border:"none", borderRadius:"4px", cursor:"pointer"}}
+        onClick = {() => {
+          const audio = new Audio(`/Colors/${item.title}.m4a`)
+          audio.play();
+        }}
+        >
+          Play Sound
+        </button>
       </div>
     </motion.div>
   );
@@ -191,8 +199,8 @@ export default function Carousel({
       ref={containerRef}
       className={`carousel-container ${round ? "round" : ""}`}
       style={{
-        width: `${baseWidth}px`,
-        ...(round && { height: `${baseWidth}px`, borderRadius: "50%" }),
+        width: `${baseWidth/16}rem`,
+        ...(round && { height: `${baseWidth/16}rem`, borderRadius: "50%" }),
       }}
     >
       <motion.div
@@ -201,9 +209,9 @@ export default function Carousel({
         {...dragProps}
         style={{
           width: itemWidth,
-          gap: `${GAP}px`,
+          gap: `${GAP/16}rem`,
           perspective: 1000,
-          perspectiveOrigin: `${position * trackItemOffset + itemWidth / 2}px 50%`,
+          perspectiveOrigin: `${(position * trackItemOffset + itemWidth / 2)/16}rem 50%`,
           x,
         }}
         onDragEnd={handleDragEnd}

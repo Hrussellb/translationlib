@@ -55,80 +55,86 @@ function Quiz({
 
   return (
     <div className="page-container">
+      {answered === vocabulary.length && <Confetti />}
       <Toaster position="top-center" />;
-      <div className="vocabulary" style={{ width: "800px" }}>
-        {answered === vocabulary.length && <Confetti />}
-        <div style={{ height: "50px", width: "800px" }}>
-          <ProgressBar
-            bgcolor="#79bc68"
-            completed={(answered / vocabulary.length) * 100}
-          />
-        </div>
-        {/*Button to skip the current question*/}
-        <button
-          className="pushable"
-          onClick={() => {
-            selectRandomVocabulary(setIndex, setWrongAnswers, vocabulary);
-            setAnswered(answered);
-            if (answered === vocabulary.length) {
-              toast.success(
-                "Congratulations! You have completed the vocabulary module!",
-              );
-            }
-            if (answered + 1 >= vocabulary.length) {
-              setAnswered(0);
-            }
-          }}
-          color={"black"}
-          border={"3px solid black"}
-        >
-          <span className="shadow"></span>
-          <span className="edge"></span>
-          <span className="front">Skip</span>
-        </button>
-        {/*End of skip button*/}
-
-        {/*Display the question and word to translate*/}
-        <h1>
-          {question} "{currentVocabulary.denaina}"
-        </h1>
-        {shuffledArray.map((vocab) => (
+      <div className="rectangle-wrapper">
+        <div className="vocabulary" style={{ width: "50rem" }}>
+          <div style={{ height: "1.25rem", width: "50rem" }}>
+            <ProgressBar
+              bgcolor="#1a6408"
+              completed={(answered / vocabulary.length) * 100}
+            />
+          </div>
+          {/*Button to skip the current question*/}
           <button
-            key={vocab.english}
-            className="pushable no-shadow"
+            className="pushable"
             onClick={() => {
-              if (vocab.english === currentVocabulary.english) {
-                selectRandomVocabulary(setIndex, setWrongAnswers, vocabulary);
-                toast.success("Correct!");
-                setAnswered(answered + 1);
-              } else {
-                toast.error("Wrong! Try again!");
-                if (answered > 0) {
-                  setAnswered(answered - 1);
-                }
+              selectRandomVocabulary(setIndex, setWrongAnswers, vocabulary);
+              setAnswered(answered);
+              if (answered === vocabulary.length) {
+                toast.success(
+                  "Congratulations! You have completed the vocabulary module!",
+                );
+              }
+              if (answered + 1 >= vocabulary.length) {
+                setAnswered(0);
               }
             }}
-            color={forColorModule ? handleWhite(vocab.english) : "black"}
-            border={
-              forColorModule ? `3px solid ${handleWhite(vocab.english)}` : color
-            }
+            color={"black"}
+            border={"0.1875rem solid black"}
           >
             <span className="shadow"></span>
             <span className="edge"></span>
-            <span className="noShadow"></span>
-            <span
-              className="front"
-              style={{
-                padding: "1rem 0rem",
-                width: "20rem",
-                textAlign: "center",
-              }}
-            >
-              {vocab.english}
-            </span>
+            <span className="front">Skip</span>
           </button>
-        ))}
-        <HomeButton />
+          {/*End of skip button*/}
+
+          {/*Display the question and word to translate*/}
+          <div className="rectangle-wrapper-h1">
+            <h1>
+              {question} "{currentVocabulary.denaina}"
+            </h1>
+          </div>
+          {shuffledArray.map((vocab) => (
+            <button
+              key={vocab.english}
+              className="pushable no-shadow"
+              onClick={() => {
+                if (vocab.english === currentVocabulary.english) {
+                  selectRandomVocabulary(setIndex, setWrongAnswers, vocabulary);
+                  toast.success("Correct!");
+                  setAnswered(answered + 1);
+                } else {
+                  toast.error("Wrong! Try again!");
+                  if (answered > 0) {
+                    setAnswered(answered - 1);
+                  }
+                }
+              }}
+              color={forColorModule ? handleWhite(vocab.english) : "black"}
+              border={
+                forColorModule
+                  ? `0.1875rem solid ${handleWhite(vocab.english)}`
+                  : color
+              }
+            >
+              <span className="shadow"></span>
+              <span className="edge"></span>
+              <span className="noShadow"></span>
+              <span
+                className="front"
+                style={{
+                  padding: "1rem 0rem",
+                  width: "20rem",
+                  textAlign: "center",
+                }}
+              >
+                {vocab.english}
+              </span>
+            </button>
+          ))}
+          <HomeButton />
+        </div>
       </div>
     </div>
   );

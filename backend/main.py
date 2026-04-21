@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 
+
 #Create server
 # Resource: https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware
 
@@ -94,3 +95,5 @@ def read_drinks_verbs_data():
 def read_buildings_data():
     data = pd.read_csv("modules_data/buildings.csv")
     return data.to_dict(orient = "records")
+
+

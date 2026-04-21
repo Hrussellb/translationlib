@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../index.css";
 
 const topPosition = "1rem";
-const leftPosition = "20px";
+const leftPosition = "1.25rem";
 
 function HomeButton() {
   const navigate = useNavigate();

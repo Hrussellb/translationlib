@@ -1,11 +1,12 @@
 // Progress bar
 
+
 function ProgressBar({ bgcolor, completed }) {
   return (
     <div
       style={{
         height: 20,
-        width: "800px",
+        width: "50rem",
         backgroundColor: "#e0e0de",
         borderRadius: 50,
       }}
@@ -14,8 +15,8 @@ function ProgressBar({ bgcolor, completed }) {
         style={{
           backgroundColor: bgcolor,
           width: `${completed}%`,
-          height: "20px",
-          borderRadius: "10px",
+          height: "1.25rem",
+          borderRadius: "0.625rem",
           transition: "width 1s ease-in-out",
         }}
       ></div>

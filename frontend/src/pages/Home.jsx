@@ -32,7 +32,7 @@ function Home() {
         style={{
           position: "relative",
           textAlign: "center",
-          padding: "200px",
+          padding: "12.5rem",
           zIndex: 1,
           alignItems: "center",
           justifyContent: "center",

@@ -13,11 +13,11 @@ function MakeFirstPage({ firstPage, setFirstPage, moduleName, words }) {
   if (!firstPage) {
     return (
       <div className="page-container">
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <div style={{ height: "400px", position: "relative" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem"}}>
+          <div style={{ height: "25rem", position: "relative" }}>
             <HomeButton />
             <p>Welcome to the {moduleName} module!</p>
-            <div style={{ height: "400px", position: "relative" }}>
+            <div style={{ height: "25rem", position: "relative" }}>
               <Carousel items={carouselItems} loop={true} />
             </div>
           </div>
@@ -25,7 +25,7 @@ function MakeFirstPage({ firstPage, setFirstPage, moduleName, words }) {
             className="pushable no-shadow"
             onClick={() => setFirstPage(true)}
             color="black"
-            border="3px solid black"
+            border="0.1875rem solid black"
           >
             <span className="shadow"></span>
             <span className="edge"></span>
