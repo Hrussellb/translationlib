@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Learning_modules.css";
 import "../index.css";
-
 //Create page that shows all the categories of the learning modules based on the CSV file in the backend.
 
 function LearningModules() {
@@ -13,11 +12,11 @@ function LearningModules() {
   useEffect(() => {
     async function fetchData() {
       try {
-        //const response = await fetch("http://127.0.0.1:8000/categories/");
-        const url =
-          import.meta.env.VITE_API_URL ||
-          "https://denainalearning-server.onrender.com";
-        const response = await fetch(`${url}/categories/`);
+        const response = await fetch("http://127.0.0.1:8000/categories/");
+        //const url =
+        //  import.meta.env.VITE_API_URL ||
+        //  "https://denainalearning-server.onrender.com";
+        //const response = await fetch(`${url}/categories/`);
         if (!response.ok) {
           throw new Error("Could not fetch categories");
         }
