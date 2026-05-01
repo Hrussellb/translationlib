@@ -6,6 +6,7 @@ Web application for learning Dena'ina, with audio and a short activity to test u
 ## Setup
 ## Tools and Libraries Used
 Frontend: React, Vite, Tailwind, Motion, React Router
+
 Backend: Pandas, FastAPI, Uvicorn
 
 ## Frontend
