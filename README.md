@@ -1,6 +1,7 @@
 ## Dena'ina Language Learning Website
 
 Clients: Dr. Maria Williams, Prof. Donita Slawson, and Ms. Edna Standifer
+
 Advisor: Dr. Pradeeban Kathiravelu
 
 ## Overview
